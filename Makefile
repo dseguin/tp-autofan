@@ -8,7 +8,9 @@ BUILDDIR := build
 TARGETDIR := bin
 PROJNAME := tp-autofan
 TARGET := $(TARGETDIR)/$(PROJNAME)
-
+INSTALLPREFIX := /usr/local/bin
+SERVICEFILE := extra/$(PROJNAME).service
+SYSTEMDPREFIX := /etc/systemd
 SRCEXT := c
 SOURCES := $(PROJNAME).$(SRCEXT)
 OBJECTS := $(BUILDDIR)/$(PROJNAME).o
@@ -23,11 +25,18 @@ RELEASEFLAGS := -O3 -Wall -Wl,--strip-all
 LIB := 
 INC := 
 
-all: debug-gnu89
+all: release-gnu89
 
 debug-gnu89: | gnu89 debug-flag makedirs $(OBJECTS) $(TARGET)
 
 release-gnu89: | gnu89 release-flag makedirs $(OBJECTS) $(TARGET)
+
+# NOTE: This (naively) assumes systemd is the init
+install: release-gnu89
+	@cp -v $(TARGET) $(INSTALLPREFIX)/
+	@cp -v $(SERVICEFILE) $(SYSTEMDPREFIX)/system/
+	@echo " systemctl enable $(PROJNAME)" ; \
+		systemctl enable $(PROJNAME)
 
 $(TARGET): $(OBJECTS)
 	@echo ""

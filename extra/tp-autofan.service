@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatically adjust fan speed
+
+[Service]
+ExecStart=/usr/local/bin/tp-autofan
+ExecStopPost=/bin/echo level auto > /proc/acpi/ibm/fan
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

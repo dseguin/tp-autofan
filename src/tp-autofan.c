@@ -50,6 +50,12 @@ int main(void)
 {
     int cores, ctemp, flevel = -1;
     struct sigaction st_sig;
+    if(seteuid(0))
+    {
+        perror("seteuid error");
+        fprintf(stderr, "Must be root to control fan.\n");
+        return 1;
+    }
     if(seteuid(TP_UIDNONROOT))
     {
         perror("seteuid error");
