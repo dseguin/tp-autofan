@@ -12,8 +12,8 @@ INSTALLPREFIX := /usr/local/bin
 SERVICEFILE := extra/$(PROJNAME).service
 SYSTEMDPREFIX := /etc/systemd
 SRCEXT := c
-SOURCES := $(PROJNAME).$(SRCEXT)
-OBJECTS := $(BUILDDIR)/$(PROJNAME).o
+SOURCES := fancontrol.c hwmon_wrapper.c main.c
+OBJECTS := $(BUILDDIR)/fancontrol.o $(BUILDDIR)/hwmon_wrapper.o $(BUILDDIR)/main.o
 DEBUGFLAGS := -Wall -Wextra -pedantic -Werror -Wfatal-errors -Wformat=2 \
 	-Wunused-function -Wswitch-enum -Wcast-align -Wpointer-arith \
 	-Wbad-function-cast -Wstrict-overflow=5 -Wfloat-conversion \
