@@ -27,6 +27,7 @@ void _create_sigaction(void)
 
 int main(void)
 {
+	_create_sigaction();
 	monitor_temp();
 	return 0;
 }

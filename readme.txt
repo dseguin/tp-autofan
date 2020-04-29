@@ -1,5 +1,9 @@
-A crude program to automatically set fan speed on some Thinkpad
-laptops. Not intended for real use. Will only work on linux.
+A program to automatically set fan speed on most Thinkpad laptops. It works
+by finding the coretemp hwmon interface, then checks the temperature every X
+seconds, and decides whether or not to ramp up/down the system fan.
+
+There are 2 temperature thresholds that influence the 3 fan speed levels, all
+of which can be configured in `src/settings.h` before compiling.
 
 This makes a number of assumptions:
 - running GNU/Linux
