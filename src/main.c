@@ -3,6 +3,7 @@
 #include <stddef.h>
 
 int _running = 1;
+struct sigaction sa;
 
 int not_quitting(void)
 {
@@ -16,7 +17,6 @@ void _sig_handler(int sig)
 
 void _create_sigaction(void)
 {
-	struct sigaction sa;
 	sa.sa_flags = 0;
 	sa.sa_handler = _sig_handler;
 	sigemptyset(&sa.sa_mask);

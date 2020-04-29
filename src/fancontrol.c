@@ -2,6 +2,7 @@
 #include "hwmon_wrapper.h"
 #include "main.h"
 #include <stdio.h>
+#include <unistd.h>
 
 #define FANCONTROL_FILE "/proc/acpi/ibm/fan"
 #define NO_CHANGE 8
@@ -56,6 +57,7 @@ void monitor_temp(void)
 		return;
 	while(not_quitting()) {
 		int change = NO_CHANGE;
+		sleep(TP_CHECKINTERVAL);
 		change = _check_fan_temp(driver_path, fan_level);
 		if(change == NO_CHANGE)
 			continue;
