@@ -15,7 +15,7 @@ SRCEXT := c
 SOURCES := fancontrol.c hwmon_wrapper.c main.c
 OBJECTS := $(BUILDDIR)/fancontrol.o $(BUILDDIR)/hwmon_wrapper.o $(BUILDDIR)/main.o
 DEBUGFLAGS := -Wall -Wextra -pedantic -Werror -Wfatal-errors -Wformat=2 \
-	-Wunused-function -Wswitch-enum -Wcast-align -Wpointer-arith \
+	-Wunused-function -Wno-unused-parameter -Wswitch-enum -Wcast-align -Wpointer-arith \
 	-Wbad-function-cast -Wstrict-overflow=5 -Wfloat-conversion \
 	-Wstrict-prototypes -Winline -Wundef -Wnested-externs -Wcast-qual \
 	-Wshadow -Wunreachable-code -Wlogical-op -Wfloat-equal -Wredundant-decls \

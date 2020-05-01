@@ -20,7 +20,7 @@ int _set_fanlevel(int level)
 		perror(FANCONTROL_FILE);
 		return 1;
 	}
-	fprintf(fan, cmd);
+	fprintf(fan, "%s", cmd);
 	fclose(fan);
 	return 0;
 }
